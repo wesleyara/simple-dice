@@ -1,49 +1,105 @@
-# Typescript template
+# simple-dice
 
-This is a template for [Typescript](https://www.typescriptlang.org/) projects.
+`simple-dice` is a lightweight dice rolling library for JavaScript and TypeScript.
 
-It comes with:
+[![npm version](https://img.shields.io/npm/v/simple-dice.svg?style=flat-square)](https://www.npmjs.com/package/simple-dice)
+[![npm downloads](https://img.shields.io/npm/dm/simple-dice.svg?style=flat-square)](https://www.npmjs.com/package/simple-dice)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
-- [Vitest](https://vitest.dev/) for testing
-- [Prettier](https://prettier.io/) for formatting
-- [ESLint](https://eslint.org/) for linting
-- [Rimraf](https://www.npmjs.com/package/rimraf) for cleaning
-- [Husky](https://typicode.github.io/husky/#/) for git hooks
-- [Commitlint](https://commitlint.js.org/#/) for commit linting
-- [Lint-staged](https://github.com/okonet/lint-staged) for linting staged files
-- [Axios](https://axios-http.com/) for HTTP requests
+## Features
 
-# Contributing
+- Parses classic dice notation: `XdY +/- Z`
+- Supports advantage (`h`) and disadvantage (`l`) in `1dYh` / `1dYl`
+- Returns full roll details (`rolls`, `total`, critical flags)
+- Uses mixed entropy (`Math.random()` + `Date.now()`) for roll generation
 
-Your contribution to the `typescript-template` is essential for the evolution of the project, you can do it as follows:
+## Installation
 
-- Open an [issue](https://github.com/wesleyara/typescript-template/issues) to clear doubts, report bugs or give ideas
-- Open a [pull request](https://github.com/wesleyara/typescript-template/pulls) to give ideas for code improvement, implementation of new features and bug fixes
+```bash
+npm install simple-dice
+```
 
-These are just some of the ways you can contribute to the project read the [CONTRIBUTING](https://github.com/wesleyara/typescript-template/blob/main/.github/CONTRIBUTING.md) for more information
+## Quick Start
 
-# Authors
+```ts
+import { rollDice } from "simple-dice";
 
-<table>
-  <tr>
-    <td align="center"><a href="https://wesleyaraujo.dev/"><img src="https://avatars.githubusercontent.com/u/89321125?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wesley Araújo</b></sub></a><br /></td>
-  </tr>
-</table>
+const result = rollDice("2d6 + 3");
 
-## ✨ Contributors
+console.log(result);
+```
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## Input Format
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+The function accepts this pattern:
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+`[numberOfDice]d[dieType][h|l]? [+-modifier]`
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+Examples:
+
+- `1d20 + 5`
+- `2d6 + 3`
+- `1d20h + 4` (advantage)
+- `1d20l - 1` (disadvantage)
+
+## API
+
+### `rollDice(input: string): RollResult`
+
+Parses a dice expression, performs the rolls, applies the modifier, and returns:
+
+```ts
+interface RollResult {
+  input: string;
+  rolls: number[];
+  modifier: number;
+  advantageType: null | string;
+  advantageRoll: null | number;
+  total: number;
+  hasCritical: boolean;
+  hasCriticalFailure: boolean;
+}
+```
+
+### Behavior Notes
+
+- Advantage/disadvantage is only valid with a single die (`1d20h`, `1d20l`)
+- `total` is calculated from the sum of all `rolls` plus `modifier`
+- `hasCritical` is `true` if any roll equals the die type (for example `20` on a `d20`)
+- `hasCriticalFailure` is `true` if any roll equals `1`
+
+## Error Cases
+
+`rollDice` throws an error in these cases:
+
+- `Invalid input format` when dice notation is invalid
+- `Modifier is required` when `+N` or `-N` is missing
+- `Advantage/Disadvantage can only be applied to a single die`
+
+## Local Development
+
+```bash
+npm install
+npm run test:run
+npm run build
+```
+
+Available scripts:
+
+- `npm test`
+- `npm run test:run`
+- `npm run lint`
+- `npm run lint:fix`
+- `npm run build`
+
+## Contributing
+
+Contributions are welcome.
+
+- Open an [issue](https://github.com/wesleyara/simple-dice/issues)
+- Open a [pull request](https://github.com/wesleyara/simple-dice/pulls)
 
 ## License
 
-Typescript template is a open source project licensed as [MIT](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
+

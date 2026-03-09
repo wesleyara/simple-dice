@@ -1,7 +1,7 @@
 {
-  "name": "change-project-name",
+  "name": "simple-dice",
   "version": "1.0.2",
-  "description": "change-description.",
+  "description": "A simple dice rolling library for JavaScript and TypeScript.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -23,18 +23,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/change-autor/change-project-name.git"
+    "url": "git+https://github.com/wesleyara/simple-dice.git"
   },
   "keywords": [
     "typescript",
     "javascript"
   ],
-  "author": "change-autor",
+  "author": "wesleyara",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/change-autor/change-project-name/issues"
+    "url": "https://github.com/wesleyara/simple-dice/issues"
   },
-  "homepage": "https://github.com/change-autor/change-project-name#readme",
+  "homepage": "https://github.com/wesleyara/simple-dice#readme",
   "dependencies": {
     "axios": "^1.13.5",
     "rimraf": "^3.0.2"
@@ -43,7 +43,7 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.1.0",
     "@eslint/js": "^10.0.1",
-    "@types/node": "^18.11.9",
+    "@types/node": "^20.19.17",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-perfectionist": "^5.6.0",
