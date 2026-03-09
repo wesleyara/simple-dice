@@ -1,9 +1,9 @@
-# simple-dice
+# smart-dice
 
-`simple-dice` is a lightweight dice rolling library for JavaScript and TypeScript.
+`smart-dice` is a lightweight dice rolling library for JavaScript and TypeScript.
 
-[![npm version](https://img.shields.io/npm/v/simple-dice.svg?style=flat-square)](https://www.npmjs.com/package/simple-dice)
-[![npm downloads](https://img.shields.io/npm/dm/simple-dice.svg?style=flat-square)](https://www.npmjs.com/package/simple-dice)
+[![npm version](https://img.shields.io/npm/v/smart-dice.svg?style=flat-square)](https://www.npmjs.com/package/smart-dice)
+[![npm downloads](https://img.shields.io/npm/dm/smart-dice.svg?style=flat-square)](https://www.npmjs.com/package/smart-dice)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 ## Features
@@ -16,13 +16,13 @@
 ## Installation
 
 ```bash
-npm install simple-dice
+npm install smart-dice
 ```
 
 ## Quick Start
 
 ```ts
-import { rollDice } from "simple-dice";
+import { rollDice } from "smart-dice";
 
 const result = rollDice("2d6 + 3");
 
@@ -96,8 +96,8 @@ Available scripts:
 
 Contributions are welcome.
 
-- Open an [issue](https://github.com/wesleyara/simple-dice/issues)
-- Open a [pull request](https://github.com/wesleyara/simple-dice/pulls)
+- Open an [issue](https://github.com/wesleyara/smart-dice/issues)
+- Open a [pull request](https://github.com/wesleyara/smart-dice/pulls)
 
 ## License
 
